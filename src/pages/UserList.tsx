@@ -17,7 +17,7 @@ function UserList() {
                             :
                             <img src={"../assets/hero.png"} alt={`Image de l\'user n°${user.id}`} className="detail-img"/>
                         }
-                        <p>Username : {user.username}</p>
+                        <h3>{user.username}</h3>
                     </Link>
                 )}
             </div>
