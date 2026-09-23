@@ -18,12 +18,20 @@ function Header() {
                 </li>
                 <li>
                     <header><Link to={"/CitationduJour"}>Citation du Jour</Link></header>
+                    <header><Link to={"/postlist"}>Liste des Posts</Link></header>
                 </li>
                 <li>
                     {user ?
                         (<header><Link to={"/profile"}>Mon profil</Link></header>)
                         :
                         (<header><Link to={"/connexion"}>Connexion</Link></header>)
+                    }
+                </li>
+                <li>
+                    {user ?
+                        (<header><Link to={"/favoris"}>Favoris</Link></header>)
+                        :
+                        (<></>)
                     }
                 </li>
                 <li>

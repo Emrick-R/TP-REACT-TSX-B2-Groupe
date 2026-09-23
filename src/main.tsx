@@ -9,6 +9,10 @@ import { setUsers } from "./store/reducers/user.ts";
 import type { Recipe } from "./types/recipe.ts";
 import { setRecipes } from "./store/reducers/recipe.ts";
 import { clearUserLogged, setUserLogged } from "./store/reducers/userLogged.ts";
+import type { Post } from "./types/post.ts";
+import { setPosts } from "./store/reducers/post.ts";
+import type { Comment } from "./types/comment.ts";
+import { setComments } from "./store/reducers/comment.ts";
 import route from "./routes/route.tsx";
 import { setLoading } from "./store/reducers/loading.ts";
 import type { Citation } from "./types/citation.ts";
@@ -20,7 +24,7 @@ interface UsersResponse {
 
 async function getUsers() {
     try {
-        const url = "https://dummyjson.com/users";
+        const url = "https://dummyjson.com/users?limit=0";
         const response = await axios.get<UsersResponse>(url);
         store.dispatch(setUsers(response.data.users))
         console.log("appel Users")
@@ -48,6 +52,10 @@ interface CitationResponse {
     quotes: Citation[];
 }
 
+interface PostResponse {
+    posts: Post[];
+}
+
 async function getCitations() {
     try {
         const url = "https://dummyjson.com/quotes";
@@ -59,39 +67,66 @@ async function getCitations() {
     }
 }
 
-getCitations();
 
-async function getMe() {
-    const token = localStorage.getItem("accesstoken")
-    if (token) {
+
+    async function getPosts() {
         try {
-            const url = "https://dummyjson.com/auth/me";
-            const response = await axios.get<User>(url,
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
-                    withCredentials: true
-                }
-            );
-            store.dispatch(setUserLogged(response.data))
-            console.log("appel Me")
+            const url = "https://dummyjson.com/posts?limit=0";
+            const response = await axios.get<PostResponse>(url);
+            store.dispatch(setPosts(response.data.posts))
+            console.log("appel Posts")
         } catch (e) {
-            store.dispatch(clearUserLogged())
             console.log(e);
         }
     }
-}
 
-Promise.all([getUsers(), getRecipes(), getMe()]).catch((e) =>
-    console.log(e)
-).finally(() =>
-    store.dispatch(setLoading(false))
-)
+    getCitations();
+    interface CommentResponse {
+        comments: Comment[];
+    }
 
-createRoot(document.getElementById('root')!).render(
-    <Provider store={store}>
-        <RouterProvider router={route} />
-    </Provider>
-)
+    async function getComments() {
+        try {
+            const url = "https://dummyjson.com/comments?limit=0";
+            const response = await axios.get<CommentResponse>(url);
+            store.dispatch(setComments(response.data.comments))
+            console.log("appel Comments")
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    async function getMe() {
+        const token = localStorage.getItem("accesstoken")
+        if (token) {
+            try {
+                const url = "https://dummyjson.com/auth/me";
+                const response = await axios.get<User>(url,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        withCredentials: true
+                    }
+                );
+                store.dispatch(setUserLogged(response.data))
+                console.log("appel Me")
+            } catch (e) {
+                store.dispatch(clearUserLogged())
+                console.log(e);
+            }
+        }
+    }
+
+    Promise.all([getUsers(), getRecipes(), getPosts(), getComments(), getMe()]).catch((e) =>
+        console.log(e)
+    ).finally(() =>
+        store.dispatch(setLoading(false))
+    )
+
+    createRoot(document.getElementById('root')!).render(
+        <Provider store={store}>
+            <RouterProvider router={route} />
+        </Provider>
+    )

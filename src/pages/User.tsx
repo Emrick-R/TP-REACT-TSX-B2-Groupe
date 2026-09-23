@@ -1,45 +1,28 @@
 import {useParams} from 'react-router-dom'
 import {useNavigate} from "react-router-dom";
-import type {User} from "../types/user.ts"
-import {useEffect, useState} from "react";
-import axios from "axios";
+import {useSelector} from "react-redux";
+import type {RootState} from "../store/store.ts";
+import UserCard from "../components/UserCard.tsx";
 
-interface UserResponse {
-    id: number;
-    image: string;
-    username: string;
-}
 
 function Utilisateur() {
     let navigate = useNavigate();
     let {userid} = useParams();
-    const url = `https://dummyjson.com/users/${userid}`;
-    const [user, setUser] = useState<UserResponse>()
-    useEffect(() => {
-        (async () => {
-            try {
-                const response = await axios.get<User>(url);
-                if (!response.data || !response.data.id) {
-                    navigate("/404")
-                } else {
-                    setUser(response.data);
-                }
-            } catch (e) {
-                console.log(e);
-                navigate("/404")
-            }
-        })();
-    }, []);
+
+    const users = useSelector((state: RootState) => state.user.users)
+    const user = users.find((u) => Number(userid) == u.id)
+
     if (!user) {
-        // un composant react doit toujours retourner du JSX ou null. JSX de Navigate
-        return
+        navigate("/404")
+        return null
     }
     return (
-        <div id="center" className="detail-card">
-            <img src={user.image} alt={`Image de l\'user n°${user.id}`} className="detail-img"/>
-            <h1>{user.username}</h1>
-            <button className="btn-back" onClick={() => navigate(-1)}> Retour</button>
-        </div>
+        <>
+            <div id="center" className="detail-card">
+                <UserCard user={user}/>
+                <button className="btn-back" onClick={() => navigate(-1)}> Retour</button>
+            </div>
+        </>
     );
 }
 

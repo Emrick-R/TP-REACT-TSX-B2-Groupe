@@ -10,6 +10,9 @@ import Profile from "../pages/Profile.tsx";
 import Err404 from "../pages/Err404.tsx";
 import Header from "../components/Header.tsx";
 import PrivateRoute from "./PrivateRoute.tsx";
+import Favoris from "../pages/Favoris.tsx";
+import Post from "../pages/Post.tsx";
+import PostList from "../pages/PostList.tsx";
 
 const Layout = () => {
     return (
@@ -45,6 +48,14 @@ const route = createBrowserRouter([
                 element: <CitationDuJour />
             },
             {
+                path: "/post/:postid",
+                element: <Post/>
+            },
+            {
+                path: "/postlist",
+                element: <PostList/>
+            },
+            {
                 path: "/connexion",
                 element: <GuestRoute>
                     <Connexion />
@@ -54,6 +65,12 @@ const route = createBrowserRouter([
                 path: "/profile",
                 element: <PrivateRoute>
                     <Profile />
+                </PrivateRoute>
+            },
+            {
+                path: "/favoris",
+                element: <PrivateRoute>
+                    <Favoris/>
                 </PrivateRoute>
             },
             {
