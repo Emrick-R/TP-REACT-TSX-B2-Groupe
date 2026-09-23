@@ -1,7 +1,5 @@
 import type {User} from "../types/user.ts";
 
-// import {store} from "../store/store.ts";
-
 function RecipeCard(props: { user: User }) {
     const {user} = props
     return (
