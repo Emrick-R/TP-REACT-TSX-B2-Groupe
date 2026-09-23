@@ -1,14 +1,14 @@
 // Page de connexion : Formulaire permettant de se connecter. La validation se fait
 // côté client en vérifiant que les identifiants saisis correspondent bien à un utilisateur
 // existant dans le deuxième fichier JSON (users.json).
-import {type SyntheticEvent, useState} from "react";
+import { type SyntheticEvent, useState } from "react";
 
 // On récupère les
 import axios from "axios";
-import type {User} from "../types/user.ts";
-import {store} from "../store/store.ts";
-import {clearUserLogged, setUserLogged} from "../store/reducers/userLogged.ts";
-import {useNavigate} from "react-router-dom";
+import type { User } from "../types/user.ts";
+import { store } from "../store/store.ts";
+import { clearUserLogged, setUserLogged } from "../store/reducers/userLogged.ts";
+import { useNavigate } from "react-router-dom";
 
 interface UserResponse {
     id: number;
@@ -20,6 +20,7 @@ interface UserResponse {
 function Connexion() {
     let [username, setUsername] = useState("")
     let [mdp, setMdp] = useState("")
+    let [message, setMessage] = useState("")
     let navigate = useNavigate();
     // On précise qu'useOutletContext() contient et est typé comme pour le header, il faut que les nom soient exactement comme dans le contexte de l'outlet
     // let {setUserid} = useOutletContext<{ userid: string | null, setUserid: Dispatch<SetStateAction<string | null>> }>()
@@ -37,7 +38,7 @@ function Connexion() {
                     password: mdp
                 },
                 {
-                    headers: {'Content-Type': "application/json"},
+                    headers: { 'Content-Type': "application/json" },
                     withCredentials: true
                 }
             )
@@ -50,7 +51,7 @@ function Connexion() {
                     const url = "https://dummyjson.com/auth/me";
                     const response = await axios.get<User>(url,
                         {
-                            headers: {Authorization: `Bearer ${token}`},
+                            headers: { Authorization: `Bearer ${token}` },
                             withCredentials: true
                         }
                     );
@@ -65,9 +66,10 @@ function Connexion() {
 
 
         } catch
-            (e) {
+        (e) {
             console.log(e);
             console.log("erreur", username, mdp)
+            setMessage("Identifiants incorrects !")
         }
 
         // let usernameVerif = USERS.users.find((u) => u.username === username)
@@ -107,6 +109,8 @@ function Connexion() {
                     </label>
                     <button type="submit" disabled={!username || !mdp} className="btn-primary">Connexion</button>
                 </form>
+                <br></br>
+                <p className="messageErreur">{message}</p>
             </div>
         </section>
     )
