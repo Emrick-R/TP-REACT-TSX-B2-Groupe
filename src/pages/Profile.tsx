@@ -1,3 +1,4 @@
+import './css/Profile.css'
 //Page de profil : En cas de correspondance, redirection automatique de l'utilisateur
 // vers sa page de profil (avec affichage de toutes ses informations fournies dans
 // users.json).

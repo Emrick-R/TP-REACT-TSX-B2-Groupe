@@ -1,5 +1,5 @@
-import type {RootState} from "../store/store.ts";
-import {useSelector} from "react-redux";
+import type { RootState } from "../store/store.ts";
+import { useSelector } from "react-redux";
 import RecipeCard from "./RecipeCard.tsx";
 
 function RecipeList() {
@@ -9,7 +9,7 @@ function RecipeList() {
             <h2>Liste des recettes</h2>
             <div className="card-grid">
                 {recipes.map((recipe) =>
-                    <RecipeCard recipe={recipe}/>
+                    <RecipeCard recipe={recipe} />
                 )}
             </div>
         </>

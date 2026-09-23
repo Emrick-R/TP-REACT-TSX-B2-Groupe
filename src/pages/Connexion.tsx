@@ -1,3 +1,4 @@
+import './css/Connexion.css'
 // Page de connexion : Formulaire permettant de se connecter. La validation se fait
 // côté client en vérifiant que les identifiants saisis correspondent bien à un utilisateur
 // existant dans le deuxième fichier JSON (users.json).
@@ -8,7 +9,6 @@ import axios from "axios";
 import type { User } from "../types/user.ts";
 import { store } from "../store/store.ts";
 import { clearUserLogged, setUserLogged } from "../store/reducers/userLogged.ts";
-import { useNavigate } from "react-router-dom";
 
 interface UserResponse {
     id: number;
@@ -21,7 +21,6 @@ function Connexion() {
     let [username, setUsername] = useState("")
     let [mdp, setMdp] = useState("")
     let [message, setMessage] = useState("")
-    let navigate = useNavigate();
     // On précise qu'useOutletContext() contient et est typé comme pour le header, il faut que les nom soient exactement comme dans le contexte de l'outlet
     // let {setUserid} = useOutletContext<{ userid: string | null, setUserid: Dispatch<SetStateAction<string | null>> }>()
 
@@ -57,7 +56,6 @@ function Connexion() {
                     );
                     const user = response.data
                     store.dispatch(setUserLogged(user))
-                    navigate("/profile")
                 } catch (e) {
                     store.dispatch(clearUserLogged())
                     console.log(e);

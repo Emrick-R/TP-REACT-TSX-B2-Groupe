@@ -1,3 +1,4 @@
+import './css/Header.css'
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { type RootState, store } from "../store/store.ts";
@@ -10,37 +11,36 @@ function Header() {
         <header className="main-header">
             <ul className="nav-list">
                 <li>
-                    <header><Link to={"/"}>Home</Link></header>
+                    <Link to={"/"}>Home</Link>
                 </li>
                 <li>
-                    <header><Link to={"/userList"}>Liste des utilisateurs</Link></header>
+                    <Link to={"/userList"}>Liste des utilisateurs</Link>
                 </li>
                 <li>
-                    <header><Link to={"/CitationduJour"}>Citation du Jour</Link></header>
+                    <Link to={"/CitationduJour"}>Citation du Jour</Link>
                 </li>
                 <li>
-                    {user ?
-                        (<header><Link to={"/profile"}>Mon profil</Link></header>)
-                        :
-                        (<header><Link to={"/connexion"}>Connexion</Link></header>)
-                    }
+                    <Link to={"/postlist"}>Liste des Posts</Link>
                 </li>
                 <li>
                     {user ?
-                        (<header><Link to={"/favoris"}>Favoris</Link></header>)
+                        (<Link to={"/profile"}>Mon profil</Link>)
                         :
-                        (<></>)
+                        (<Link to={"/connexion"}>Connexion</Link>)
                     }
                 </li>
-                <li>
-                    {user ?
-                        ((<header><Link to={"/"} onClick={() => {
-                            store.dispatch(clearUserLogged())
-                        }}>Déconnexion</Link></header>))
-                        :
-                        (<></>)
-                    }
-                </li>
+                {user && (
+                    <>
+                        <li>
+                            <Link to={"/favoris"}>Favoris</Link>
+                        </li>
+                        <li>
+                            <Link to={"/"} onClick={() => {
+                                store.dispatch(clearUserLogged())
+                            }}>Déconnexion</Link>
+                        </li>
+                    </>
+                )}
             </ul>
         </header>
     );

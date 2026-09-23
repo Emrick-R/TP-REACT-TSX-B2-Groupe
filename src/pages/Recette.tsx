@@ -1,3 +1,4 @@
+import './css/Recette.css'
 //Vue détaillée : Consultation complète d’une recette sélectionnée via son identifiant
 // (visuel grand format, ingrédients, étapes).
 import {useNavigate, useParams} from "react-router-dom";
@@ -53,6 +54,9 @@ function Recette() {
                     <></>
                 }</h1>
                 <p className="recipe-meta">{`Temps de préparation : ${recipe.prepTimeMinutes} minutes \| Temps de cuissons : ${recipe.cookTimeMinutes} minutes`}</p>
+                <p className="recipe-meta">{`Nombre de part : ${recipe.servings} par personne (${recipe.caloriesPerServing} cal/pers)\| Difficulté : ${recipe.difficulty}`}</p>
+                <p className="recipe-meta">{`Recette ${recipe.cuisine} pour le `}{recipe.mealType.map((type) => <span>{type} </span>)}{`\| Tags : `}{recipe.tags.map((tag) => <span>{tag} </span>)}</p>
+                <p className="recipe-meta">{`note : ${recipe.rating} \| nombre d'avis : ${recipe.reviewCount}`}</p>
                 <div className="recipe-columns">
                     <div>
                         <h2>Ingrédients</h2>

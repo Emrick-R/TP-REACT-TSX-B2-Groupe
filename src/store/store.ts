@@ -4,6 +4,8 @@ import recipeReducer from './reducers/recipe'
 import userLogged from "./reducers/userLogged.ts";
 import loading from "./reducers/loading.ts";
 import citationReducer from "./reducers/citation.ts";
+import post from "./reducers/post.ts";
+import comment from "./reducers/comment.ts";
 
 export const store = configureStore({
     reducer: {
@@ -11,7 +13,9 @@ export const store = configureStore({
         recipe: recipeReducer,
         userLogged: userLogged,
         loading: loading,
-        citation: citationReducer
+        citation: citationReducer,
+        post: post,
+        comment: comment
     },
 })
 
