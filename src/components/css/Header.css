@@ -28,6 +28,21 @@
   color: var(--accent);
 }
 
+.nav-list a[href="/favoris"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-list .badge {
+  min-width: 24px;
+  box-sizing: border-box;
+  padding: 2px 6px;
+  line-height: 20px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
 .nav-list li:nth-child(5) {
   margin-left: auto;
 }

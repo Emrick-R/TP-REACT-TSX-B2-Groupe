@@ -6,6 +6,7 @@ import { clearUserLogged } from "../store/reducers/userLogged.ts";
 
 function Header() {
     const user = useSelector((state: RootState) => state.userLogged.userLogged)
+    const favorisCount = useSelector((state: RootState) => state.userLogged.favoris?.length ?? 0)
 
     return (
         <header className="main-header">
@@ -32,7 +33,9 @@ function Header() {
                 {user && (
                     <>
                         <li>
-                            <Link to={"/favoris"}>Favoris</Link>
+                            <Link to={"/favoris"}>
+                                Favoris <span className="badge" aria-live="polite">{favorisCount}</span>
+                            </Link>
                         </li>
                         <li>
                             <Link to={"/"} onClick={() => {
