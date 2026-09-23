@@ -17,6 +17,7 @@ function Header() {
                 </li>
                 <li>
                     <header><Link to={"/CitationduJour"}>Citation du Jour</Link></header>
+                    <header><Link to={"/postlist"}>Liste des Posts</Link></header>
                 </li>
                 <li>
                     {user ?
