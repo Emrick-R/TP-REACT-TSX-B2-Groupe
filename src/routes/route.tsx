@@ -9,6 +9,8 @@ import Profile from "../pages/Profile.tsx";
 import Err404 from "../pages/Err404.tsx";
 import Header from "../components/Header.tsx";
 import PrivateRoute from "./PrivateRoute.tsx";
+import Post from "../pages/Post.tsx";
+import PostList from "../pages/PostList.tsx";
 
 const Layout = () => {
     return (
@@ -38,6 +40,14 @@ const route = createBrowserRouter([
             {
                 path: "/recette/:recetteid",
                 element: <Recette/>
+            },
+            {
+                path: "/post/:postid",
+                element: <Post/>
+            },
+            {
+                path: "/postlist",
+                element: <PostList/>
             },
             {
                 path: "/connexion",

@@ -3,13 +3,17 @@ import userReducer from './reducers/user'
 import recipeReducer from './reducers/recipe'
 import userLogged from "./reducers/userLogged.ts";
 import loading from "./reducers/loading.ts";
+import post from "./reducers/post.ts";
+import comment from "./reducers/comment.ts";
 
 export const store = configureStore({
     reducer: {
         user: userReducer,
         recipe: recipeReducer,
         userLogged: userLogged,
-        loading: loading
+        loading: loading,
+        post: post,
+        comment: comment
     },
 })
 

@@ -1,7 +1,7 @@
-import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {type RootState, store} from "../store/store.ts";
-import {clearUserLogged} from "../store/reducers/userLogged.ts";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { type RootState, store } from "../store/store.ts";
+import { clearUserLogged } from "../store/reducers/userLogged.ts";
 
 function Header() {
     const user = useSelector((state: RootState) => state.userLogged.userLogged)
@@ -14,6 +14,9 @@ function Header() {
                 </li>
                 <li>
                     <header><Link to={"/userList"}>Liste des utilisateurs</Link></header>
+                </li>
+                <li>
+                    <header><Link to={"/postlist"}>Liste des Posts</Link></header>
                 </li>
                 <li>
                     {user ?
