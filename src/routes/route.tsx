@@ -1,7 +1,8 @@
-import {createBrowserRouter, Outlet} from "react-router";
+import { createBrowserRouter, Outlet } from "react-router";
 import App from "../pages/App.tsx";
 import UserList from "../pages/UserList.tsx";
 import Utilisateur from "../pages/User.tsx";
+import CitationDuJour from "../pages/Citation.tsx";
 import Recette from "../pages/Recette.tsx";
 import GuestRoute from "./GuestRoute.tsx";
 import Connexion from "../pages/Connexion.tsx";
@@ -13,51 +14,55 @@ import PrivateRoute from "./PrivateRoute.tsx";
 const Layout = () => {
     return (
         <>
-            <Header/>
-            <Outlet/>
+            <Header />
+            <Outlet />
         </>
     )
 }
 
 const route = createBrowserRouter([
     {
-        element: <Layout/>,
+        element: <Layout />,
         children: [
             {
                 path: "/",
-                element: <App/>
+                element: <App />
             },
             {
                 path: "/userList",
-                element: <UserList/>
+                element: <UserList />
             },
             {
                 path: "/user/:userid",
-                element: <Utilisateur/>
+                element: <Utilisateur />
             },
             {
                 path: "/recette/:recetteid",
-                element: <Recette/>
+                element: <Recette />
+            },
+            {
+                path: "/citationdujour",
+                element: <CitationDuJour />
             },
             {
                 path: "/connexion",
                 element: <GuestRoute>
-                        <Connexion/>
-                    </GuestRoute>
+                    <Connexion />
+                </GuestRoute>
             },
             {
                 path: "/profile",
                 element: <PrivateRoute>
-                    <Profile/>
+                    <Profile />
                 </PrivateRoute>
             },
             {
                 path: "/404",
-                element: <Err404/>
+                element: <Err404 />
             },
             {
                 path: "*",
-                element: <Err404/>
+                element: <Err404 />
             }
         ]
     }

@@ -1,18 +1,18 @@
-import {createRoot} from 'react-dom/client'
-import {RouterProvider} from "react-router/dom"
+import { createRoot } from 'react-dom/client'
+import { RouterProvider } from "react-router/dom"
 import './pages/css/index.css'
-
-import {Provider} from "react-redux";
-import {store} from "./store/store.ts";
+import { Provider } from "react-redux";
+import { store } from "./store/store.ts";
 import axios from "axios";
-import type {User} from "./types/user.ts";
-import {setUsers} from "./store/reducers/user.ts";
-import type {Recipe} from "./types/recipe.ts";
-import {setRecipes} from "./store/reducers/recipe.ts";
-import {clearUserLogged, setUserLogged} from "./store/reducers/userLogged.ts";
+import type { User } from "./types/user.ts";
+import { setUsers } from "./store/reducers/user.ts";
+import type { Recipe } from "./types/recipe.ts";
+import { setRecipes } from "./store/reducers/recipe.ts";
+import { clearUserLogged, setUserLogged } from "./store/reducers/userLogged.ts";
 import route from "./routes/route.tsx";
-import {setLoading} from "./store/reducers/loading.ts";
-
+import { setLoading } from "./store/reducers/loading.ts";
+import type { Citation } from "./types/citation.ts";
+import { setCitations } from "./store/reducers/citation.ts";
 
 interface UsersResponse {
     users: User[];
@@ -43,6 +43,23 @@ async function getRecipes() {
         console.log(e);
     }
 }
+
+interface CitationResponse {
+    quotes: Citation[];
+}
+
+async function getCitations() {
+    try {
+        const url = "https://dummyjson.com/quotes";
+        const response = await axios.get<CitationResponse>(url);
+        store.dispatch(setCitations(response.data.quotes))
+        console.log("appel Citations")
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+getCitations();
 
 async function getMe() {
     const token = localStorage.getItem("accesstoken")
@@ -75,6 +92,6 @@ Promise.all([getUsers(), getRecipes(), getMe()]).catch((e) =>
 
 createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
-        <RouterProvider router={route}/>
+        <RouterProvider router={route} />
     </Provider>
 )

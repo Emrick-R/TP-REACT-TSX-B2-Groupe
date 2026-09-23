@@ -1,15 +1,17 @@
-import {configureStore} from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import userReducer from './reducers/user'
 import recipeReducer from './reducers/recipe'
 import userLogged from "./reducers/userLogged.ts";
 import loading from "./reducers/loading.ts";
+import citationReducer from "./reducers/citation.ts";
 
 export const store = configureStore({
     reducer: {
         user: userReducer,
         recipe: recipeReducer,
         userLogged: userLogged,
-        loading: loading
+        loading: loading,
+        citation: citationReducer
     },
 })
 
