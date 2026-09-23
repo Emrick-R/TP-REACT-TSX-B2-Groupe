@@ -1,3 +1,4 @@
+import './css/Connexion.css'
 // Page de connexion : Formulaire permettant de se connecter. La validation se fait
 // côté client en vérifiant que les identifiants saisis correspondent bien à un utilisateur
 // existant dans le deuxième fichier JSON (users.json).

@@ -1,4 +1,3 @@
-import './css/App.css'
 import RecipeList from "../components/RecipeList.tsx"
 
 function App() {

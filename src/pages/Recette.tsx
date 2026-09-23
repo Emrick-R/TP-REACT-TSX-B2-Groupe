@@ -1,3 +1,4 @@
+import './css/Recette.css'
 //Vue détaillée : Consultation complète d’une recette sélectionnée via son identifiant
 // (visuel grand format, ingrédients, étapes).
 import {useNavigate, useParams} from "react-router-dom";

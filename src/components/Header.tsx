@@ -1,3 +1,4 @@
+import './css/Header.css'
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { type RootState, store } from "../store/store.ts";
