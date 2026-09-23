@@ -83,14 +83,16 @@ function Post() {
 
                 <h2 className="post-section-title">Commentaires ({postComments.length})</h2>
 
-                <form className="comment-form" onSubmit={handleAddComment}>
-                    <textarea
-                        placeholder="Écrire un commentaire..."
-                        value={newComment}
-                        onChange={(e) => setNewComment(e.target.value)}
-                    />
-                    <button type="submit" className="btn-primary">Envoyer</button>
-                </form>
+                {userLogged &&
+                    <form className="comment-form" onSubmit={handleAddComment}>
+                        <textarea
+                            placeholder="Écrire un commentaire..."
+                            value={newComment}
+                            onChange={(e) => setNewComment(e.target.value)}
+                        />
+                        <button type="submit" className="btn-primary">Envoyer</button>
+                    </form>
+                }
 
                 <ul className="comment-list">
                     {postComments.map((c) =>
