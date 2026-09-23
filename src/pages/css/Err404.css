@@ -1,0 +1,24 @@
+.error-card {
+  max-width: 400px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.error-card h1 {
+  font-size: 96px;
+  margin: 0 0 30px;
+  color: var(--accent);
+}
+
+.error-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.error-actions a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}

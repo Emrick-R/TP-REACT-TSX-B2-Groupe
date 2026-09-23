@@ -1,0 +1,79 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-h);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  transition:
+    box-shadow 0.3s,
+    border-color 0.3s;
+}
+
+.card:hover {
+  box-shadow: var(--shadow);
+  border-color: var(--accent-border);
+}
+
+.card > a {
+  width: 100%;
+  flex-grow: 1;
+  color: inherit;
+  text-decoration: none;
+}
+
+.card h3 {
+  margin: 0 0 12px;
+  overflow-wrap: anywhere;
+}
+
+.card button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.card button[aria-pressed="true"],
+.card button:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+.card button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.card-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.card-img-round {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.card-subtitle {
+  color: var(--text);
+  font-size: 14px;
+  margin-top: 8px;
+}
