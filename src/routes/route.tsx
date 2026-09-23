@@ -10,6 +10,7 @@ import Profile from "../pages/Profile.tsx";
 import Err404 from "../pages/Err404.tsx";
 import Header from "../components/Header.tsx";
 import PrivateRoute from "./PrivateRoute.tsx";
+import Favoris from "../pages/Favoris.tsx";
 
 const Layout = () => {
     return (
@@ -54,6 +55,12 @@ const route = createBrowserRouter([
                 path: "/profile",
                 element: <PrivateRoute>
                     <Profile />
+                </PrivateRoute>
+            },
+            {
+                path: "/favoris",
+                element: <PrivateRoute>
+                    <Favoris/>
                 </PrivateRoute>
             },
             {

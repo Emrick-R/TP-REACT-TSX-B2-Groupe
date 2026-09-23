@@ -27,6 +27,13 @@ function Header() {
                 </li>
                 <li>
                     {user ?
+                        (<header><Link to={"/favoris"}>Favoris</Link></header>)
+                        :
+                        (<></>)
+                    }
+                </li>
+                <li>
+                    {user ?
                         ((<header><Link to={"/"} onClick={() => {
                             store.dispatch(clearUserLogged())
                         }}>Déconnexion</Link></header>))
