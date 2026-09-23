@@ -1,5 +1,3 @@
-import './css/RecipeList.css'
-import { Link } from "react-router-dom";
 import type { RootState } from "../store/store.ts";
 import { useSelector } from "react-redux";
 import RecipeCard from "./RecipeCard.tsx";

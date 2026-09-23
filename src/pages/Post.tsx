@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { type SyntheticEvent, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import type { RootState, AppDispatch } from "../store/store.ts";
 import { addComment, deleteComment } from "../store/reducers/comment.ts";

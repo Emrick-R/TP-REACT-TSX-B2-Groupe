@@ -6,10 +6,10 @@ function App() {
         <>
             <section className="page">
                 <div>
-                    <h1>Bienvenue Emrick RIVET !</h1>
+                    <h1>Bienvenue sur notre site !</h1>
                 </div>
                 <div >
-                    <RecipeList/>
+                    <RecipeList />
                 </div>
             </section>
         </>

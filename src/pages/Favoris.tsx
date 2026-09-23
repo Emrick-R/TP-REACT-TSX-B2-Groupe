@@ -1,4 +1,3 @@
-import './css/App.css'
 import {useSelector} from "react-redux";
 import type {RootState} from "../store/store.ts";
 import RecipeCard from "../components/RecipeCard.tsx";

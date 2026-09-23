@@ -1,3 +1,4 @@
+import './css/RecipeList.css'
 import {Link} from "react-router-dom";
 import type {RootState} from "../store/store.ts";
 import {useDispatch, useSelector} from "react-redux";
