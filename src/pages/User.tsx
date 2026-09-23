@@ -1,3 +1,4 @@
+import './css/User.css'
 import {useParams} from 'react-router-dom'
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
@@ -17,12 +18,12 @@ function Utilisateur() {
         return null
     }
     return (
-        <>
+        <section className="page">
             <div id="center" className="detail-card">
                 <UserCard user={user}/>
                 <button className="btn-back" onClick={() => navigate(-1)}> Retour</button>
             </div>
-        </>
+        </section>
     );
 }
 
